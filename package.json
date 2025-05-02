@@ -9,5 +9,22 @@
   },
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "@babel/cli": "^7.27.1",
+    "@babel/core": "^7.27.1",
+    "@babel/node": "^7.27.1",
+    "@babel/preset-env": "^7.27.1",
+    "@babel/preset-flow": "^7.27.1",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "fs": "^0.0.1-security",
+    "npm": "^11.3.0",
+    "path": "^0.12.7",
+    "sequelize": "^6.37.7",
+    "sequelize-auto": "^0.8.8",
+    "sqlite3": "^5.1.7"
+  }
 }
