@@ -21,6 +21,12 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING(300),
       allowNull: true,
     },
+    // 결제가기 기능 구현
+    soldout: {
+      type: DataTypes.INTEGER(1), // sqlite에서는 true|false 가 지원되지 않으므로 0일때는 false, 1일때는 true로 만들어줌.
+      allowNull: false,
+      defulatValue: 0,
+    },
   });
 
   return product;

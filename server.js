@@ -9,6 +9,7 @@ const cors = require('cors');
 const models = require('./models/index.js');
 const products = require('./models/product.js');
 const multer = require('multer');
+const { where } = require('sequelize');
 const upload = multer({
   storage: multer.diskStorage({
     destination: function (req, file, cb) {
@@ -43,6 +44,7 @@ app.get('/banners', (req, res) => {
     });
 });
 
+// 홈 화면 상품들 불러오기
 app.get('/products', (req, res) => {
   // res.send('업로드된 상품입니다');
 
@@ -61,7 +63,7 @@ app.get('/products', (req, res) => {
     ],
     // 컬럼에서 어떤 정보들만 가져올건지 설정, 메인페이지에서는 description이 필요없으므로!
     // 필요없는 정보 노출 방지, 보안, 트래픽 낭비를 막기 위해
-    attributes: ['id', 'name', 'price', 'createdAt', 'seller', 'imageUrl'],
+    attributes: ['id', 'name', 'price', 'createdAt', 'seller', 'imageUrl', 'soldout'],
   })
     .then((result) => {
       console.log('PRODUCTS: ', result);
@@ -143,6 +145,33 @@ app.post('/src/assets', upload.single('image'), (req, res) => {
   res.send({
     imageUrl: file.path,
   });
+});
+
+// 결제하기 기능 구현
+// postman으로 먼저 테스트하기.
+app.post('/purchase/:id', (req, res) => {
+  const parmas = req.params;
+
+  models.Product.update(
+    {
+      soldout: 1, // true
+    },
+    {
+      // 어떤 애들 업데이트 시켜줄꺼냐
+      where: {
+        id: parmas.id,
+      },
+    }
+  )
+    .then((result) => {
+      res.send({
+        result: true,
+      });
+    })
+    .catch((error) => {
+      console.error(error);
+      res.status(500).send('결제에 에러가 발생했습니다.');
+    });
 });
 
 app.listen(port, () => {
