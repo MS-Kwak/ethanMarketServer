@@ -1,4 +1,4 @@
-export default function (sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   // 테이블을 만드는데, 테이블 이름은 'Product'
   const product = sequelize.define('Product', {
     name: {
@@ -24,6 +24,4 @@ export default function (sequelize, DataTypes) {
   });
 
   return product;
-}
-
-// export default productData;
+};

@@ -1,7 +1,7 @@
 // node test.js 커맨드 명령어 실행
 
-import http from 'http';
-// var http = require('http'); // node 내장 모듈 불러옴
+// import http from 'http';
+var http = require('http'); // node 내장 모듈 불러옴
 const hostname = '127.0.0.1'; // localhost와 동일
 const port = 3000;
 

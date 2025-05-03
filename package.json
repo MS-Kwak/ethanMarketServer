@@ -1,6 +1,5 @@
 {
-  "type": "module",
-  "name": "ethanmarketserver",
+  "type": "commonjs",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -21,6 +20,7 @@
     "cors": "^2.8.5",
     "express": "^5.1.0",
     "fs": "^0.0.1-security",
+    "multer": "^1.4.5-lts.2",
     "npm": "^11.3.0",
     "path": "^0.12.7",
     "sequelize": "^6.37.7",
